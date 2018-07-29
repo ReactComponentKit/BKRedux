@@ -15,8 +15,8 @@ open class ViewModelType {
     public let rx_action = PublishSubject<Action>()
     public let rx_state = BehaviorRelay<[String:State]?>(value: nil)
     
-    let store = Store()
-    let disposeBag = DisposeBag()
+    public let store = Store()
+    public let disposeBag = DisposeBag()
     
     public init() {
         setupRxStream()
@@ -40,12 +40,11 @@ open class ViewModelType {
             .disposed(by: disposeBag)
     }
     
-    func on(newState: [String:State]?) {
+    open func on(newState: [String:State]?) {
         
     }
     
-    func on(error: Error, action: Action) {
+    open func on(error: Error, action: Action) {
         
     }
 }
-
