@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-public class ViewModelType {
+open class ViewModelType {
     // rx port
     public let rx_action = PublishSubject<Action>()
     public let rx_state = BehaviorRelay<[String:State]?>(value: nil)

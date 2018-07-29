@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "BKRedux"
-  s.version      = "0.0.4"
+  s.version      = "0.0.5"
   s.summary      = "BKRedux is implementation Redux store in Swift."
   s.homepage     = "https://github.com/skyfe79/BKRedux"
   s.license      = "MIT"
