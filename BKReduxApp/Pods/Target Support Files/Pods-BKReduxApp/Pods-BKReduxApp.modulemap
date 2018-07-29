@@ -1,0 +1,6 @@
+framework module Pods_BKReduxApp {
+  umbrella header "Pods-BKReduxApp-umbrella.h"
+
+  export *
+  module * { export * }
+}
