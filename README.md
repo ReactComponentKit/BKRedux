@@ -12,7 +12,7 @@ pod 'BKRedux'
 
 ### Define State
  
-You should state as [String:State]. State is typealias of Any.
+You should define state as [String:State]. State is typealias of Any.
 
 ```swift
  store.set(
