@@ -10,6 +10,8 @@ pod 'BKRedux'
 
 ## Counter Example
 
+![](./art/shot.png)
+
 ### Define State
  
 You should define state as [String:State]. State is typealias of Any.
