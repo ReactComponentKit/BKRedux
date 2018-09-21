@@ -8,12 +8,9 @@
 
 import Foundation
 
-func cachePostware(state: [String:State], action: Action) -> [String:State] {
-    
-    if let count = state["count"] as? Int {
-        UserDefaults.standard.set(count, forKey: "count")
-        UserDefaults.standard.synchronize()
-    }
-    
-    return state
+func cachePostware(state: State, action: Action) -> State {
+    guard let mystate = state as? MyState else { return state }
+    UserDefaults.standard.set(mystate.count, forKey: "count")
+    UserDefaults.standard.synchronize()
+    return mystate
 }

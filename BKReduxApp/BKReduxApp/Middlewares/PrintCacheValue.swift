@@ -8,7 +8,7 @@
 
 import Foundation
 
-func printCacheValue(state: [String:State], action: Action) -> [String:State] {
+func printCacheValue(state: State, action: Action) -> State {
     print("[## CACHED ##] value: \(UserDefaults.standard.integer(forKey: "count"))")
     return state
 }

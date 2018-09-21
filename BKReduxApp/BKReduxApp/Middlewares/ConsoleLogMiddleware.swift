@@ -8,7 +8,7 @@
 
 import Foundation
 
-func consoleLogMiddleware(state: [String:State], action: Action) -> [String:State] {
+func consoleLogMiddleware(state: State, action: Action) -> State {
     print("[## LOGGING ##] action: \(String(describing: action)) :: state: \(state)")
     return state
 }

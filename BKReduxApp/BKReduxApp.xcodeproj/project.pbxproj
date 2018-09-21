@@ -29,6 +29,8 @@
 		4E47E7D2210D740A00F242B9 /* CountReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47E7D0210D740A00F242B9 /* CountReducer.swift */; };
 		4E47E7D4210D741000F242B9 /* CachePostware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47E7D3210D741000F242B9 /* CachePostware.swift */; };
 		4E47E7D6210D741900F242B9 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47E7D5210D741900F242B9 /* ViewModel.swift */; };
+		4E929EC421556FE900FDD954 /* StateKeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E929EC321556FE900FDD954 /* StateKeyPath.swift */; };
+		4EA4DCE82153F17300E9F2A3 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA4DCE72153F17300E9F2A3 /* State.swift */; };
 		99A40878051B15099CF40547 /* Pods_BKReduxAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A1CB36F878E1C73F4DB60FD /* Pods_BKReduxAppTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +71,8 @@
 		4E47E7D0210D740A00F242B9 /* CountReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountReducer.swift; sourceTree = "<group>"; };
 		4E47E7D3210D741000F242B9 /* CachePostware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachePostware.swift; sourceTree = "<group>"; };
 		4E47E7D5210D741900F242B9 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		4E929EC321556FE900FDD954 /* StateKeyPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateKeyPath.swift; sourceTree = "<group>"; };
+		4EA4DCE72153F17300E9F2A3 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		7A1CB36F878E1C73F4DB60FD /* Pods_BKReduxAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BKReduxAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98532B479242170FFFBA41C9 /* Pods_BKReduxApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BKReduxApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2FC4A3480BC332B891AF606 /* Pods-BKReduxApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BKReduxApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-BKReduxApp/Pods-BKReduxApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -153,6 +157,8 @@
 				4E47E7B5210D731700F242B9 /* Reducer.swift */,
 				4E47E7B7210D731700F242B9 /* Store.swift */,
 				4E47E7B9210D731700F242B9 /* ViewModelType.swift */,
+				4EA4DCE72153F17300E9F2A3 /* State.swift */,
+				4E929EC321556FE900FDD954 /* StateKeyPath.swift */,
 			);
 			path = BKRedux;
 			sourceTree = "<group>";
@@ -383,10 +389,12 @@
 				4E47E7C0210D731700F242B9 /* Middleware.swift in Sources */,
 				4E47E7CA210D73FB00F242B9 /* RandomColorAction.swift in Sources */,
 				4E47E7BE210D731700F242B9 /* Action.swift in Sources */,
+				4EA4DCE82153F17300E9F2A3 /* State.swift in Sources */,
 				4E47E7CD210D740100F242B9 /* ConsoleLogMiddleware.swift in Sources */,
 				4E47E7D6210D741900F242B9 /* ViewModel.swift in Sources */,
 				4E47E7C8210D73FB00F242B9 /* IncreaseAction.swift in Sources */,
 				4E47E7D4210D741000F242B9 /* CachePostware.swift in Sources */,
+				4E929EC421556FE900FDD954 /* StateKeyPath.swift in Sources */,
 				4E47E7D2210D740A00F242B9 /* CountReducer.swift in Sources */,
 				4E47E797210D72DF00F242B9 /* ViewController.swift in Sources */,
 				4E47E7CE210D740100F242B9 /* PrintCacheValue.swift in Sources */,
