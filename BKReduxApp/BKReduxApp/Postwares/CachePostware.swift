@@ -7,10 +7,19 @@
 //
 
 import Foundation
+import RxSwift
 
-func cachePostware(state: State, action: Action) -> State {
-    guard let mystate = state as? MyState else { return state }
-    UserDefaults.standard.set(mystate.count, forKey: "count")
-    UserDefaults.standard.synchronize()
-    return mystate
+func cachePostware(state: State, action: Action) -> Observable<State> {
+    return Single.create(subscribe: { (single) -> Disposable in
+        guard let mystate = state as? MyState else {
+            single(.success(state))
+            return Disposables.create()
+        }
+        
+        UserDefaults.standard.set(mystate.count, forKey: "count")
+        UserDefaults.standard.synchronize()
+        single(.success(mystate))
+        
+        return Disposables.create()
+    }).asObservable()
 }

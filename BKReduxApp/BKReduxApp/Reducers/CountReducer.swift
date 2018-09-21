@@ -9,7 +9,6 @@
 import Foundation
 import RxSwift
 
-
 func countReducer<S>(name: StateKeyPath<S>, state: StateValue?) -> (Action) -> Observable<(StateKeyPath<S>, StateValue?)> {
     return { action in
         guard let prevState = state as? Int else { return Observable.just((name, 0)) }

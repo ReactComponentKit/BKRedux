@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import RxSwift
 
-func consoleLogMiddleware(state: State, action: Action) -> State {
+func consoleLogMiddleware(state: State, action: Action) -> Observable<State> {
     print("[## LOGGING ##] action: \(String(describing: action)) :: state: \(state)")
-    return state
+    return Observable.just(state)
 }

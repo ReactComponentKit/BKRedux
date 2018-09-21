@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import RxSwift
 
-func printCacheValue(state: State, action: Action) -> State {
+func printCacheValue(state: State, action: Action) -> Observable<State> {
     print("[## CACHED ##] value: \(UserDefaults.standard.integer(forKey: "count"))")
-    return state
+    return  Observable.just(state)
 }

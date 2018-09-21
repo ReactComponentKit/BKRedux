@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 
 private enum Q {
+    fileprivate static let serialQ = SerialDispatchQueueScheduler(qos: .background)
     fileprivate static let concurrentQ = ConcurrentDispatchQueueScheduler(qos: .background)
 }
 
@@ -102,11 +103,23 @@ public final class Store<S: State> {
             }
 
             var mutableState = state
-            mutableState = strongSelf.middlewares.reduce(mutableState, { (nextState, m) -> State in
-                return m(nextState, action)
-            })
+            Observable.from(strongSelf.middlewares)
+                .subscribeOn(Q.serialQ)
+                .observeOn(Q.serialQ)
+                .flatMap({ (m: Middleware) -> Observable<State> in
+                    return m(mutableState, action)
+                })
+                .do(onNext: { (modifiedState) in
+                    mutableState = modifiedState
+                })
+                .reduce(mutableState, accumulator: { (ignore, nextState) -> State in
+                    return nextState
+                })
+                .subscribe(onNext: { (finalState) in
+                    single(.success(finalState))
+                })
+                .disposed(by: strongSelf.disposeBag)
             
-            single(.success(mutableState))
             return Disposables.create()
         }).asObservable()
     }
@@ -149,13 +162,24 @@ public final class Store<S: State> {
             }
             
             var mutableState = state
-            mutableState = strongSelf.postwares.reduce(mutableState, { (nextState, p) -> State in
-                return p(nextState, action)
-            })
+            Observable.from(strongSelf.postwares)
+                .subscribeOn(Q.serialQ)
+                .observeOn(Q.serialQ)
+                .flatMap({ (p: Postware) -> Observable<State> in
+                    return p(mutableState, action)
+                })
+                .do(onNext: { (modifiedState) in
+                    mutableState = modifiedState
+                })
+                .reduce(mutableState, accumulator: { (ignore, nextState) -> State in
+                    return nextState
+                })
+                .subscribe(onNext: { (finalState) in
+                    single(.success(finalState))
+                })
+                .disposed(by: strongSelf.disposeBag)
             
-            single(.success(mutableState))
             return Disposables.create()
-            
         }).asObservable()
     }
 }
