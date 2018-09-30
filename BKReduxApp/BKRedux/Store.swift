@@ -62,11 +62,11 @@ public final class Store<S: State> {
                     guard let strongSelf = self else { return }
                     strongSelf.state = newState
                     single(.success(newState))
-                    }, onError: { (error) in
-                        // 오류 발생시에는 액션에 따라 오류를 처리할지 말지 결정하기 위해서 오류와 액션을 동시에 넣어준다.
-                        var mutableState = state
-                        mutableState.error = (error, action)
-                        single(.success(mutableState))
+                }, onError: { (error) in
+                    // 오류 발생시에는 액션에 따라 오류를 처리할지 말지 결정하기 위해서 오류와 액션을 동시에 넣어준다.
+                    var mutableState = state
+                    mutableState.error = (error, action)
+                    single(.success(mutableState))
                 })
                 .disposed(by: disposeBag)
             
