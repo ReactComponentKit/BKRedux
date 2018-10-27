@@ -46,7 +46,7 @@ class ViewModel: ViewModelType<MyState> {
         rx_color.accept(newState.color)
     }
     
-    override func on(error: Error, action: Action) {
+    override func on(error: Error, action: Action, onState: MyState) {
         
     }
     
