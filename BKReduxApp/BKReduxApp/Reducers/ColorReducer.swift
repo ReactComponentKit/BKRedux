@@ -10,13 +10,15 @@
 import RxSwift
 import UIKit
 
-func colorReducer<S>(name: StateKeyPath<S>, state: StateValue?) -> (Action) -> Observable<(StateKeyPath<S>, StateValue?)> {
-    return { action in
-        guard let prevState = state as? UIColor else { return Observable.just((name: name, result: UIColor.white)) }
-        
-        if let colorAction = action as? RandomColorAction {
-            return Observable.just((name, colorAction.payload))
+extension ViewModel {
+    func colorReducer<S>(name: StateKeyPath<S>, state: StateValue?) -> (Action) -> Observable<(StateKeyPath<S>, StateValue?)> {
+        return { action in
+            guard let prevState = state as? UIColor else { return Observable.just((name: name, result: UIColor.white)) }
+            
+            if let colorAction = action as? RandomColorAction {
+                return Observable.just((name, colorAction.payload))
+            }
+            return Observable.just((name, prevState))
         }
-        return Observable.just((name, prevState))
     }
 }

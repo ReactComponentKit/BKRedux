@@ -28,6 +28,7 @@ class ViewModel: ViewModelType<MyState> {
         store.set(
             initialState: MyState(),
             middlewares: [
+                loop,
                 printCacheValue,
                 consoleLogMiddleware
             ],
