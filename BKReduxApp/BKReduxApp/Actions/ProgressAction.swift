@@ -10,3 +10,17 @@ import Foundation
 struct StartProgressAction: Action {
     
 }
+
+struct StopProgressAction: Action {
+    
+}
+
+struct CompleteProgressAction: Action {
+    
+}
+
+struct ProgressAction: Action {
+    
+}
+
+

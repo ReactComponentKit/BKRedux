@@ -22,6 +22,8 @@ open class ViewModelType<S: State> {
     
     public let store = Store<S>()
     public let disposeBag = DisposeBag()
+    private var nextAction: Action? = nil
+    private var applyState: Bool = false
     
     public init() {
         setupRxStream()
@@ -46,7 +48,15 @@ open class ViewModelType<S: State> {
                 if let (error, action) = newState.error {
                     self?.on(error: error, action: action, onState: newState)
                 } else {
-                    self?.on(newState: newState)
+                    if let nextAction = self?.nextAction {
+                        if self?.applyState == true {
+                            self?.on(newState: newState)
+                        }
+                        self?.dispatch(action: nextAction)
+                        self?.nextAction = nil
+                    } else {
+                        self?.on(newState: newState)
+                    }
                 }
             })
             .disposed(by: disposeBag)
@@ -54,6 +64,11 @@ open class ViewModelType<S: State> {
     
     public func dispatch(action: Action) {
         rx_action.accept(action)
+    }
+    
+    public func nextDispatch(action: Action?, afterApplyNewState: Bool = false) {
+        self.nextAction = action
+        self.applyState = afterApplyNewState
     }
     
     open func beforeDispatch(action: Action) -> Action {

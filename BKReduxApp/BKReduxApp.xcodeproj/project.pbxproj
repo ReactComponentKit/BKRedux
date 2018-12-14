@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		3AD58F5E9C195B06BDF3F209 /* Pods_BKReduxApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98532B479242170FFFBA41C9 /* Pods_BKReduxApp.framework */; };
 		4E14BEC121B9A09D007BB627 /* ProgressAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E14BEC021B9A09D007BB627 /* ProgressAction.swift */; };
-		4E14BEC321B9A0C1007BB627 /* LoopMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E14BEC221B9A0C1007BB627 /* LoopMiddleware.swift */; };
+		4E14BEC321B9A0C1007BB627 /* ProgressMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E14BEC221B9A0C1007BB627 /* ProgressMiddleware.swift */; };
 		4E47E795210D72DF00F242B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47E794210D72DF00F242B9 /* AppDelegate.swift */; };
 		4E47E797210D72DF00F242B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47E796210D72DF00F242B9 /* ViewController.swift */; };
 		4E47E79A210D72DF00F242B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E47E798210D72DF00F242B9 /* Main.storyboard */; };
@@ -49,7 +49,7 @@
 /* Begin PBXFileReference section */
 		0E008BD9176300600BFE50BB /* Pods-BKReduxApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BKReduxApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BKReduxApp/Pods-BKReduxApp.debug.xcconfig"; sourceTree = "<group>"; };
 		4E14BEC021B9A09D007BB627 /* ProgressAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressAction.swift; sourceTree = "<group>"; };
-		4E14BEC221B9A0C1007BB627 /* LoopMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopMiddleware.swift; sourceTree = "<group>"; };
+		4E14BEC221B9A0C1007BB627 /* ProgressMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressMiddleware.swift; sourceTree = "<group>"; };
 		4E47E791210D72DF00F242B9 /* BKReduxApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BKReduxApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E47E794210D72DF00F242B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E47E796210D72DF00F242B9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -183,7 +183,7 @@
 			children = (
 				4E47E7CB210D740000F242B9 /* ConsoleLogMiddleware.swift */,
 				4E47E7CC210D740000F242B9 /* PrintCacheValue.swift */,
-				4E14BEC221B9A0C1007BB627 /* LoopMiddleware.swift */,
+				4E14BEC221B9A0C1007BB627 /* ProgressMiddleware.swift */,
 			);
 			path = Middlewares;
 			sourceTree = "<group>";
@@ -407,7 +407,7 @@
 				4E47E795210D72DF00F242B9 /* AppDelegate.swift in Sources */,
 				4E47E7BC210D731700F242B9 /* Postware.swift in Sources */,
 				4E47E7C9210D73FB00F242B9 /* DecreaseAction.swift in Sources */,
-				4E14BEC321B9A0C1007BB627 /* LoopMiddleware.swift in Sources */,
+				4E14BEC321B9A0C1007BB627 /* ProgressMiddleware.swift in Sources */,
 				4E47E7BB210D731700F242B9 /* Reducer.swift in Sources */,
 				4E14BEC121B9A09D007BB627 /* ProgressAction.swift in Sources */,
 				4E47E7BF210D731700F242B9 /* ViewModelType.swift in Sources */,
