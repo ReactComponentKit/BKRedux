@@ -13,14 +13,22 @@ import RxCocoa
 struct MyState: State {
     var count: Int = 0
     var color: UIColor = UIColor.white
+    
+    var stopProgress: Bool = false
+    var progress : Float = 0.0
     var error: (Error, Action)? = nil
 }
 
 class ViewModel: ViewModelType<MyState> {
     
-    let rx_count =  BehaviorRelay<String>(value: "0")
-    let rx_color = BehaviorRelay<UIColor>(value: UIColor.white)
+    struct Output {
+        let count = BehaviorRelay<String>(value: "0")
+        let color = BehaviorRelay<UIColor>(value: UIColor.white)
+        let progress = BehaviorRelay<Float>(value: 0.0)
+    }
     
+    let output = Output()
+
     override init() {
         super.init()
 
@@ -28,7 +36,8 @@ class ViewModel: ViewModelType<MyState> {
         store.set(
             initialState: MyState(),
             middlewares: [
-                printCacheValue,
+                //printCacheValue,
+                progress,
                 consoleLogMiddleware
             ],
             reducers: [
@@ -42,8 +51,9 @@ class ViewModel: ViewModelType<MyState> {
     }
     
     override func on(newState: MyState) {
-        rx_count.accept(String(newState.count))
-        rx_color.accept(newState.color)
+        output.count.accept(String(newState.count))
+        output.color.accept(newState.color)
+        output.progress.accept(newState.progress)
     }
     
     override func on(error: Error, action: Action, onState: MyState) {

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +13,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ReactComponentKitApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BKReduxApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,15 +49,42 @@
                                     <constraint firstAttribute="height" constant="50" id="Kvr-uI-CLS"/>
                                 </constraints>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="47" translatesAutoresizingMaskIntoConstraints="NO" id="KDw-eX-32C">
+                                <rect key="frame" x="16" y="293.5" width="343" height="80"/>
+                                <subviews>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="edD-Iy-kuD">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="16.5"/>
+                                    </progressView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ewr-Bp-AsB">
+                                        <rect key="frame" x="0.0" y="63.5" width="343" height="16.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZW-E0-Mpw">
+                                                <rect key="frame" x="0.0" y="0.0" width="163.5" height="16.5"/>
+                                                <state key="normal" title="STOP"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lsa-cW-92H">
+                                                <rect key="frame" x="179.5" y="0.0" width="163.5" height="16.5"/>
+                                                <state key="normal" title="START"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="cvW-9I-ajL"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="YRK-Lv-BL9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="49M-CH-I3g"/>
                             <constraint firstItem="b5U-FT-QmJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9Ug-K4-pur"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="b5U-FT-QmJ" secondAttribute="bottom" id="D1p-Sm-jjd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KDw-eX-32C" secondAttribute="trailing" constant="16" id="L80-tW-wiH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YRK-Lv-BL9" secondAttribute="trailing" id="NHD-vI-4N7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="b5U-FT-QmJ" secondAttribute="trailing" id="R0g-Lj-qN6"/>
                             <constraint firstItem="YRK-Lv-BL9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="UTU-G8-SgB"/>
+                            <constraint firstItem="KDw-eX-32C" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="f7f-7Z-34d"/>
+                            <constraint firstItem="KDw-eX-32C" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ixn-mx-Nt9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -66,11 +93,14 @@
                         <outlet property="countLabel" destination="YRK-Lv-BL9" id="z1f-AA-5Az"/>
                         <outlet property="minusButton" destination="BVT-80-pLA" id="ucH-dB-2WO"/>
                         <outlet property="plusButton" destination="afn-LD-6Pb" id="7m3-tS-lIx"/>
+                        <outlet property="progressView" destination="edD-Iy-kuD" id="Gt9-SR-42I"/>
+                        <outlet property="startProgressButton" destination="Lsa-cW-92H" id="yNW-gI-JtF"/>
+                        <outlet property="stopProgressButton" destination="jZW-E0-Mpw" id="NfN-Ac-FRM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-502" y="-312"/>
+            <point key="canvasLocation" x="-911" y="-377"/>
         </scene>
     </scenes>
 </document>

@@ -17,6 +17,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var colorButton: UIButton!
     @IBOutlet weak var plusButton: UIButton!
     
+    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var startProgressButton: UIButton!
+    @IBOutlet weak var stopProgressButton: UIButton!
     
     private let viewModel = ViewModel()
     private let disposeBag = DisposeBag()
@@ -28,7 +31,12 @@ class ViewController: UIViewController {
         minusButton.rx.tap.map { DecreaseAction() }.bind(to: viewModel.rx_action).disposed(by: disposeBag)
         colorButton.rx.tap.map { RandomColorAction() }.bind(to: viewModel.rx_action).disposed(by: disposeBag)
 
-        viewModel.rx_color
+        startProgressButton.rx.tap.map { StartProgressAction() }.bind(to: viewModel.rx_action).disposed(by: disposeBag)
+        stopProgressButton.rx.tap.map { StopProgressAction() }.bind(to: viewModel.rx_action).disposed(by: disposeBag)
+        
+        viewModel
+            .output
+            .color
             .asDriver()
             .drive(onNext: { [weak self] (color) in
                 if self?.view.backgroundColor != color {
@@ -37,10 +45,21 @@ class ViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        viewModel.rx_count
+        viewModel
+            .output
+            .count
             .asDriver()
             .drive(onNext: { [weak self] (countString) in
                 self?.countLabel.text = countString
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel
+            .output
+            .progress
+            .asDriver()
+            .drive(onNext: { [weak self] (progress) in
+                self?.progressView.progress = progress
             })
             .disposed(by: disposeBag)
     }
