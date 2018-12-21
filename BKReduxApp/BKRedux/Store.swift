@@ -14,29 +14,36 @@ private enum Q {
     fileprivate static let concurrentQ = ConcurrentDispatchQueueScheduler(qos: .background)
 }
 
-public final class Store<S: State> {
+open class Store<S: State> {
     
     public private(set) var state: S?
     private(set) var reducers: [StateKeyPath<S>:Reducer<S>]
-    private(set) var middlewares: [Middleware]
+    private(set) var middlewares: [Middleware?]
     private(set) var postwares: [Postware]
     private let disposeBag = DisposeBag()
     
     public init() {
         self.state = nil
-        self.reducers = [:]
         self.middlewares = []
+        self.reducers = [:]
         self.postwares = []
     }
     
-    public func set(initialState: S, middlewares:[Middleware] = [], reducers:[StateKeyPath<S>:Reducer<S>], postwares:[Postware] = []) {
+    public func deinitialize() {
+        self.state = nil
+        self.middlewares.removeAll()
+        self.reducers.removeAll()
+        self.postwares.removeAll()
+    }
+    
+    public func set(initialState: S, middlewares:[Middleware?] = [], reducers:[StateKeyPath<S>:Reducer<S>], postwares:[Postware] = []) {
         self.state = initialState
         self.reducers = reducers
         self.middlewares = middlewares
         self.postwares = postwares
     }
     
-    public func dispatch(action: Action) -> Single<State?> {
+    func dispatch(action: Action) -> Single<State?> {
         return Single.create(subscribe: { [weak self] (single) -> Disposable in
             guard let strongSelf = self, var state = strongSelf.state else {
                 single(.success(nil))
@@ -85,7 +92,7 @@ public final class Store<S: State> {
             }
 
             var mutableState = state
-            Observable.from(strongSelf.middlewares)
+            Observable.from(strongSelf.middlewares.compactMap { $0 })
                 .subscribeOn(Q.serialQ)
                 .observeOn(Q.serialQ)
                 .flatMap({ (m: Middleware) -> Observable<State> in

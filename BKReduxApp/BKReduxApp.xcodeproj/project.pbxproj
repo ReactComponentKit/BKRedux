@@ -331,7 +331,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-BKReduxApp/Pods-BKReduxApp-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-BKReduxApp/Pods-BKReduxApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
@@ -344,7 +344,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BKReduxApp/Pods-BKReduxApp-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BKReduxApp/Pods-BKReduxApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E3D0EE0ED813F43C1D9CAD6C /* [CP] Check Pods Manifest.lock */ = {
