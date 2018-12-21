@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+
 extension ViewModel {
     func progress(state: State, action: Action) -> Observable<State> {
         guard var mutableState = state as? MyState else { return .just(state) }
@@ -16,7 +17,7 @@ extension ViewModel {
         case is StartProgressAction:
             mutableState.stopProgress = false
             mutableState.progress = 0.0
-            nextDispatch(action: ProgressAction(), afterApplyNewState: true)
+            nextDispatch(action: ProgressAction(), applyNewState: true)
 
         case is StopProgressAction:
             mutableState.stopProgress = true
@@ -24,21 +25,27 @@ extension ViewModel {
             
         case is CompleteProgressAction:
             mutableState.stopProgress = true
-            nextDispatch(action: IncreaseAction())
+            nextDispatch(action: IncreaseAction(), applyNewState: true)
             
         case is ProgressAction:
             if mutableState.stopProgress {
                 nextDispatch(action: nil)
-                break
-            }
-            
-            mutableState.progress += 0.1
-            if mutableState.progress > 1.0 {
-                nextDispatch(action: CompleteProgressAction(), afterApplyNewState: true)
             } else {
-                nextDispatch(action: ProgressAction(), afterApplyNewState: true)
-                Thread.sleep(forTimeInterval: 0.1)
+                mutableState.progress += 0.01
+                if mutableState.progress > 1.0 {
+                    nextDispatch(action: CompleteProgressAction(), applyNewState: true)
+                } else {
+                    nextDispatch(action: ProgressAction(), applyNewState: true)
+                    Thread.sleep(forTimeInterval: 0.1)
+                    
+                    if let currentState = store.state {
+                        let progress = mutableState.progress
+                        mutableState = currentState
+                        mutableState.progress = progress
+                    }
+                }
             }
+
         default:
             break
         }

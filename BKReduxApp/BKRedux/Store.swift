@@ -24,9 +24,16 @@ public final class Store<S: State> {
     
     public init() {
         self.state = nil
-        self.reducers = [:]
         self.middlewares = []
+        self.reducers = [:]
         self.postwares = []
+    }
+    
+    public func deinitialize() {
+        self.state = nil
+        self.middlewares.removeAll()
+        self.reducers.removeAll()
+        self.postwares.removeAll()
     }
     
     public func set(initialState: S, middlewares:[Middleware] = [], reducers:[StateKeyPath<S>:Reducer<S>], postwares:[Postware] = []) {

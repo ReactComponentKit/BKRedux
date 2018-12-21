@@ -10,11 +10,6 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-public struct VoidAction: Action {
-    public init() {
-    }
-}
-
 open class ViewModelType<S: State> {
     // rx port
     public let rx_action = BehaviorRelay<Action>(value: VoidAction())
@@ -23,23 +18,40 @@ open class ViewModelType<S: State> {
     public let store = Store<S>()
     public let disposeBag = DisposeBag()
     private var nextAction: Action? = nil
-    private var applyState: Bool = false
+    private var applyNewState: Bool = false
     
     public init() {
         setupRxStream()
     }
     
+    /// If you use ViewModel as a namespce for middleware, reducer and postware,
+    /// You should call this method in ViewController's deinit
+    /// Because the array for middleware, reducer and postware has strong reference to
+    /// ViewModel's instance method(ex: middleware, reducer, postware)
+    public func deinitialize() {
+        store.deinitialize()
+    }
+    
     private func setupRxStream() {
         rx_action
             .filter { type(of: $0) != VoidAction.self }
-            .map(beforeDispatch)
+            .map({ [weak self] (action) in
+                return self?.beforeDispatch(action: action) ?? VoidAction()
+            })
             .filter { type(of: $0) != VoidAction.self }
-            .flatMap(store.dispatch)
+            .flatMap { [weak self] (action)  in
+                return self?.store.dispatch(action: action) ?? Single.create(subscribe: { (single) -> Disposable in
+                    single(.success(nil))
+                    return Disposables.create()
+                })
+            }
             .observeOn(MainScheduler.asyncInstance)
             .map({ (state: State?) -> S? in
                 return state as? S
             })
-            .bind(to: rx_state)
+            .subscribe(onNext: { [weak self] (state: S?) in
+                self?.rx_state.accept(state)
+            })
             .disposed(by: disposeBag)
         
         rx_state
@@ -49,7 +61,7 @@ open class ViewModelType<S: State> {
                     self?.on(error: error, action: action, onState: newState)
                 } else {
                     if let nextAction = self?.nextAction {
-                        if self?.applyState == true {
+                        if self?.applyNewState == true {
                             self?.on(newState: newState)
                         }
                         self?.dispatch(action: nextAction)
@@ -66,9 +78,9 @@ open class ViewModelType<S: State> {
         rx_action.accept(action)
     }
     
-    public func nextDispatch(action: Action?, afterApplyNewState: Bool = false) {
+    public func nextDispatch(action: Action?, applyNewState: Bool = false) {
         self.nextAction = action
-        self.applyState = afterApplyNewState
+        self.applyNewState = applyNewState
     }
     
     open func beforeDispatch(action: Action) -> Action {

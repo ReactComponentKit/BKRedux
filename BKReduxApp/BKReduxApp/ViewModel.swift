@@ -16,6 +16,7 @@ struct MyState: State {
     
     var stopProgress: Bool = false
     var progress : Float = 0.0
+    
     var error: (Error, Action)? = nil
 }
 
@@ -31,12 +32,12 @@ class ViewModel: ViewModelType<MyState> {
 
     override init() {
         super.init()
-
+        
         // STORE
         store.set(
             initialState: MyState(),
             middlewares: [
-                //printCacheValue,
+                printCacheValue,
                 progress,
                 consoleLogMiddleware
             ],
