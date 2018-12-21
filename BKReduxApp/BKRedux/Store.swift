@@ -43,7 +43,7 @@ public final class Store<S: State> {
         self.postwares = postwares
     }
     
-    func dispatch(action: Action) -> Single<State?> {
+    public func dispatch(action: Action) -> Single<State?> {
         return Single.create(subscribe: { [weak self] (single) -> Disposable in
             guard let strongSelf = self, var state = strongSelf.state else {
                 single(.success(nil))

@@ -10,7 +10,7 @@
 import RxSwift
 import UIKit
 
-//extension ViewModel {
+extension ViewModel {
     func colorReducer<S>(name: StateKeyPath<S>, state: StateValue?) -> (Action) -> Observable<(StateKeyPath<S>, StateValue?)> {
         return { action in
             guard let prevState = state as? UIColor else { return Observable.just((name: name, result: UIColor.white)) }
@@ -21,4 +21,4 @@ import UIKit
             return Observable.just((name, prevState))
         }
     }
-//}
+}
