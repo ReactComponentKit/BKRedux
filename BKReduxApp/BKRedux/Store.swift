@@ -14,7 +14,7 @@ private enum Q {
     fileprivate static let concurrentQ = ConcurrentDispatchQueueScheduler(qos: .background)
 }
 
-open class Store<S: State> {
+public final class Store<S: State> {
     
     public private(set) var state: S?
     private(set) var reducers: [StateKeyPath<S>:Reducer<S>]

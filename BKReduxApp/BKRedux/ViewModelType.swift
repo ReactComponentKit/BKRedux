@@ -12,7 +12,7 @@ import RxCocoa
 
 open class ViewModelType<S: State> {
     // rx port
-    public let rx_action:BehaviorRelay<Action> = BehaviorRelay<Action>(value: VoidAction())
+    public let rx_action = BehaviorRelay<Action>(value: VoidAction())
     public let rx_state = BehaviorRelay<S?>(value: nil)
     
     public let store = Store<S>()
