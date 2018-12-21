@@ -18,7 +18,7 @@ public final class Store<S: State> {
     
     public private(set) var state: S?
     private(set) var reducers: [StateKeyPath<S>:Reducer<S>]
-    private(set) var middlewares: [Middleware?]
+    private(set) var middlewares: [Middleware]
     private(set) var postwares: [Postware]
     private let disposeBag = DisposeBag()
     
@@ -36,7 +36,7 @@ public final class Store<S: State> {
         self.postwares.removeAll()
     }
     
-    public func set(initialState: S, middlewares:[Middleware?] = [], reducers:[StateKeyPath<S>:Reducer<S>], postwares:[Postware] = []) {
+    public func set(initialState: S, middlewares:[Middleware] = [], reducers:[StateKeyPath<S>:Reducer<S>], postwares:[Postware] = []) {
         self.state = initialState
         self.reducers = reducers
         self.middlewares = middlewares
@@ -92,7 +92,7 @@ public final class Store<S: State> {
             }
 
             var mutableState = state
-            Observable.from(strongSelf.middlewares.compactMap { $0 })
+            Observable.from(strongSelf.middlewares)
                 .subscribeOn(Q.serialQ)
                 .observeOn(Q.serialQ)
                 .flatMap({ (m: Middleware) -> Observable<State> in
