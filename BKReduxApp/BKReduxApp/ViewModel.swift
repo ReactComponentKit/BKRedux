@@ -17,7 +17,6 @@ struct MyState: State {
     var stopProgress: Bool = false
     var progress : Float = 0.0
     
-    var nextDispatch: NextDispatch?
     var error: (Error, Action)? = nil
 }
 

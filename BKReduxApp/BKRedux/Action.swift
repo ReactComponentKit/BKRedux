@@ -16,13 +16,3 @@ public struct VoidAction: Action {
     public init() {
     }
 }
-
-public struct NextDispatch {
-    let action: Action
-    let applyNewState: Bool
-    
-    init(action: Action, applyNewState: Bool = false) {
-        self.action = action
-        self.applyNewState = applyNewState
-    }
-}
