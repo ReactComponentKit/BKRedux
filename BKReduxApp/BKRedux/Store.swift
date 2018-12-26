@@ -54,8 +54,8 @@ public final class Store<S: State> {
             let disposeBag = strongSelf.disposeBag
             
             strongSelf.middleware(state: state, action: action)
-                .subscribeOn(Q.concurrentQ)
-                .observeOn(Q.concurrentQ)
+                .subscribeOn(Q.serialQ)
+                .observeOn(Q.serialQ)
                 .flatMap({ [weak self] (middlewareState) -> Observable<State> in
                     guard let strongSelf = self else { return Observable.just(middlewareState) }
                     return strongSelf.reduce(state: middlewareState, action: action)

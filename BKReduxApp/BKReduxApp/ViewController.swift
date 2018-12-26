@@ -27,12 +27,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        plusButton.rx.tap.map { IncreaseAction() }.bind(to: viewModel.rx_action).disposed(by: disposeBag)
-        minusButton.rx.tap.map { DecreaseAction() }.bind(to: viewModel.rx_action).disposed(by: disposeBag)
-        colorButton.rx.tap.map { RandomColorAction() }.bind(to: viewModel.rx_action).disposed(by: disposeBag)
+        
+        plusButton.rx.tap.map { IncreaseAction() }.bind(onNext: viewModel.dispatch).disposed(by: disposeBag)
+        minusButton.rx.tap.map { DecreaseAction() }.bind(onNext: viewModel.dispatch).disposed(by: disposeBag)
+        colorButton.rx.tap.map { RandomColorAction() }.bind(onNext: viewModel.dispatch).disposed(by: disposeBag)
 
-        startProgressButton.rx.tap.map { StartProgressAction() }.bind(to: viewModel.rx_action).disposed(by: disposeBag)
-        stopProgressButton.rx.tap.map { StopProgressAction() }.bind(to: viewModel.rx_action).disposed(by: disposeBag)
+        startProgressButton.rx.tap.map { StartProgressAction() }.bind(onNext: viewModel.dispatch).disposed(by: disposeBag)
+        stopProgressButton.rx.tap.map { StopProgressAction() }.bind(onNext: viewModel.dispatch).disposed(by: disposeBag)
         
         viewModel
             .output

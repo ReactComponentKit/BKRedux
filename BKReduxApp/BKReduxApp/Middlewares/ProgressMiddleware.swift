@@ -21,16 +21,13 @@ extension ViewModel {
 
         case is StopProgressAction:
             mutableState.stopProgress = true
-            nextDispatch(action: nil)
             
         case is CompleteProgressAction:
             mutableState.stopProgress = true
             nextDispatch(action: IncreaseAction(), applyNewState: true)
             
         case is ProgressAction:
-            if mutableState.stopProgress {
-                nextDispatch(action: nil)
-            } else {
+            if mutableState.stopProgress == false {
                 mutableState.progress += 0.01
                 if mutableState.progress > 1.0 {
                     nextDispatch(action: CompleteProgressAction(), applyNewState: true)
