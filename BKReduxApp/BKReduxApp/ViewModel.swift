@@ -29,7 +29,6 @@ class ViewModel: ViewModelType<MyState> {
     }
     
     let output = Output()
-
     override init() {
         super.init()
         
@@ -42,8 +41,8 @@ class ViewModel: ViewModelType<MyState> {
                 consoleLogMiddleware
             ],
             reducers: [
-                StateKeyPath(\MyState.count): countReducer,
-                StateKeyPath(\MyState.color): colorReducer
+                countReducer,
+                colorReducer
             ],
             postwares: [
                 cachePostware
