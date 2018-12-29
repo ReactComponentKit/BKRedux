@@ -18,7 +18,6 @@ class Queue<T> {
             semaphore.signal()
         }
         items.insert(item, at: 0)
-        
     }
     
     func dequeue() -> T? {
@@ -27,7 +26,6 @@ class Queue<T> {
             semaphore.signal()
         }
         return items.popLast()
-        
     }
     
     var count: Int {
