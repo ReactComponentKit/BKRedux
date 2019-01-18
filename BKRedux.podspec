@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "BKRedux"
-  s.version      = "1.2.1"
+  s.version      = "1.2.2"
   s.summary      = "BKRedux is implementation Redux store in Swift."
   s.homepage     = "https://github.com/ReactComponentKit/BKRedux"
   s.license      = "MIT"
@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios
   s.ios.deployment_target = "8.0"
   s.osx.deployment_target = "10.10"
-  s.swift_version         = "4.1"
+  s.swift_version         = "4.2"
   s.source       = { :git => "https://github.com/ReactComponentKit/BKRedux.git", :tag => "#{s.version}" }
   s.source_files  = "BKReduxApp/BKRedux/{*.swift}"
   s.requires_arc = true
