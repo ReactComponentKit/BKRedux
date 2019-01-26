@@ -9,5 +9,8 @@
 import Foundation
 
 struct IncreaseAction: Action {
-    let payload = 1
+    let payload: Int
+    init(payload: Int = 1) {
+        self.payload = payload
+    }
 }

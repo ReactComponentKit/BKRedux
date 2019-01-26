@@ -7,9 +7,20 @@
 //
 
 import XCTest
+import RxSwift
+import RxCocoa
+import RxTest
+import RxBlocking
+
 @testable import BKReduxApp
 
+class TestValue {
+    
+}
+
 class BKReduxAppTests: XCTestCase {
+    
+    
     
     override func setUp() {
         super.setUp()
@@ -21,15 +32,39 @@ class BKReduxAppTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+    func testCount() {
+        let expectation = self.expectation(description: "testCount")
+        let scheduler = TestScheduler(initialClock: 10)
+        let disposeBag = DisposeBag()
+        let viewModel = ViewModel()
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+        let dispatchActions: TestableObservable<Action> = scheduler.createHotObservable([
+            .next(1, IncreaseAction(payload: 3)),
+            .next(2, IncreaseAction(payload: 10)),
+            .next(3, DecreaseAction()),
+            .next(4, DecreaseAction())
+        ])
+        
+        dispatchActions.bind { (action) in
+            viewModel.dispatch(action: action)
+        }.disposed(by: disposeBag)
+        
+        let observer = scheduler.createObserver(String.self)
+        
+        viewModel.output.count.asDriver().drive(onNext: { (value) in
+            observer.onNext(value)
+            if observer.events.count == dispatchActions.recordedEvents.count + 1 {
+                expectation.fulfill()
+            }
+        }).disposed(by: disposeBag)
+        
+        let _ = scheduler.start(disposed: 500) {
+            return dispatchActions.asObservable()
+        }
+        
+        waitForExpectations(timeout: 1) { (error) in
+            XCTAssertEqual(observer.events.count, 5)
+            XCTAssertEqual(viewModel.output.count.value, "11")
         }
     }
     

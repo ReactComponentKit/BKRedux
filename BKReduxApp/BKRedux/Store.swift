@@ -44,34 +44,31 @@ public final class Store<S: State> {
                 single(.success(state))
                 return Disposables.create()
             }
-            
-            var mutableState = state
-            mutableState.error = nil
+
+            strongSelf.state.error = nil
             Observable.from(strongSelf.reducers)
                 .subscribeOn(Q.serialQ)
                 .observeOn(Q.serialQ)
                 .flatMap({ (r: Reducer) -> Observable<State> in
-                    return r(mutableState, action)
+                    return r(strongSelf.state, action)
                 })
                 .do(onNext: { (modifiedState: State) in
                     if let modifiedS = modifiedState as? S {
-                        mutableState = modifiedS
+                        strongSelf.state = modifiedS
                     }
                 })
-                .reduce(mutableState, accumulator: { (ignore, newState) -> State in
+                .reduce(strongSelf.state, accumulator: { (ignore, newState) -> State in
                     return newState
                 })
                 .subscribe(onNext: { (finalState) in
                     if let finalS = finalState as? S {
                         strongSelf.state = finalS
                     }
-                    single(.success(finalState))
+                    single(.success(strongSelf.state))
                 }, onError: { (error) in
                     // 오류 발생시에는 액션에 따라 오류를 처리할지 말지 결정하기 위해서 오류와 액션을 동시에 넣어준다.
-                    var mutableState = state
-                    mutableState.error = (error, action)
-                    strongSelf.state = mutableState
-                    single(.success(mutableState))
+                    strongSelf.state.error = (error, action)
+                    single(.success(strongSelf.state))
                 })
                 .disposed(by: strongSelf.disposeBag)
             
