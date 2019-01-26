@@ -35,19 +35,13 @@ class ViewModel: ViewModelType<MyState> {
         // STORE
         store.set(
             initialState: MyState(),
-            middlewares: [
-                
-            ],
             reducers: [
                 printCachedValue,
                 progress,
                 count,
                 color,
                 cache,
-                consoleLog,
-            ],
-            postwares: [
-                
+                consoleLog
             ]
         )
     }

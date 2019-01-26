@@ -17,11 +17,9 @@
 		4E47E79F210D72DF00F242B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E47E79D210D72DF00F242B9 /* LaunchScreen.storyboard */; };
 		4E47E7AA210D72DF00F242B9 /* BKReduxAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47E7A9210D72DF00F242B9 /* BKReduxAppTests.swift */; };
 		4E47E7BB210D731700F242B9 /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47E7B5210D731700F242B9 /* Reducer.swift */; };
-		4E47E7BC210D731700F242B9 /* Postware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47E7B6210D731700F242B9 /* Postware.swift */; };
 		4E47E7BD210D731700F242B9 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47E7B7210D731700F242B9 /* Store.swift */; };
 		4E47E7BE210D731700F242B9 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47E7B8210D731700F242B9 /* Action.swift */; };
 		4E47E7BF210D731700F242B9 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47E7B9210D731700F242B9 /* ViewModelType.swift */; };
-		4E47E7C0210D731700F242B9 /* Middleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47E7BA210D731700F242B9 /* Middleware.swift */; };
 		4E47E7C8210D73FB00F242B9 /* IncreaseAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47E7C5210D73FB00F242B9 /* IncreaseAction.swift */; };
 		4E47E7C9210D73FB00F242B9 /* DecreaseAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47E7C6210D73FB00F242B9 /* DecreaseAction.swift */; };
 		4E47E7CA210D73FB00F242B9 /* RandomColorAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47E7C7210D73FB00F242B9 /* RandomColorAction.swift */; };
@@ -62,11 +60,9 @@
 		4E47E7A9210D72DF00F242B9 /* BKReduxAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BKReduxAppTests.swift; sourceTree = "<group>"; };
 		4E47E7AB210D72DF00F242B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E47E7B5210D731700F242B9 /* Reducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
-		4E47E7B6210D731700F242B9 /* Postware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Postware.swift; sourceTree = "<group>"; };
 		4E47E7B7210D731700F242B9 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		4E47E7B8210D731700F242B9 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		4E47E7B9210D731700F242B9 /* ViewModelType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
-		4E47E7BA210D731700F242B9 /* Middleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Middleware.swift; sourceTree = "<group>"; };
 		4E47E7C5210D73FB00F242B9 /* IncreaseAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncreaseAction.swift; sourceTree = "<group>"; };
 		4E47E7C6210D73FB00F242B9 /* DecreaseAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecreaseAction.swift; sourceTree = "<group>"; };
 		4E47E7C7210D73FB00F242B9 /* RandomColorAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomColorAction.swift; sourceTree = "<group>"; };
@@ -156,8 +152,6 @@
 			isa = PBXGroup;
 			children = (
 				4E47E7B8210D731700F242B9 /* Action.swift */,
-				4E47E7BA210D731700F242B9 /* Middleware.swift */,
-				4E47E7B6210D731700F242B9 /* Postware.swift */,
 				4E47E7B5210D731700F242B9 /* Reducer.swift */,
 				4E47E7B7210D731700F242B9 /* Store.swift */,
 				4E47E7B9210D731700F242B9 /* ViewModelType.swift */,
@@ -381,7 +375,6 @@
 			files = (
 				4E47E7D1210D740A00F242B9 /* Color.swift in Sources */,
 				4E47E7BD210D731700F242B9 /* Store.swift in Sources */,
-				4E47E7C0210D731700F242B9 /* Middleware.swift in Sources */,
 				4EFAF4C521D3C4B0004C1257 /* Queue.swift in Sources */,
 				4E47E7CA210D73FB00F242B9 /* RandomColorAction.swift in Sources */,
 				4E47E7BE210D731700F242B9 /* Action.swift in Sources */,
@@ -395,7 +388,6 @@
 				4E47E797210D72DF00F242B9 /* ViewController.swift in Sources */,
 				4E47E7CE210D740100F242B9 /* PrintCachedValue.swift in Sources */,
 				4E47E795210D72DF00F242B9 /* AppDelegate.swift in Sources */,
-				4E47E7BC210D731700F242B9 /* Postware.swift in Sources */,
 				4E47E7C9210D73FB00F242B9 /* DecreaseAction.swift in Sources */,
 				4E14BEC321B9A0C1007BB627 /* Progress.swift in Sources */,
 				4E47E7BB210D731700F242B9 /* Reducer.swift in Sources */,
