@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		3AD58F5E9C195B06BDF3F209 /* Pods_BKReduxApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98532B479242170FFFBA41C9 /* Pods_BKReduxApp.framework */; };
 		4E14BEC121B9A09D007BB627 /* ProgressAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E14BEC021B9A09D007BB627 /* ProgressAction.swift */; };
-		4E14BEC321B9A0C1007BB627 /* ProgressMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E14BEC221B9A0C1007BB627 /* ProgressMiddleware.swift */; };
+		4E14BEC321B9A0C1007BB627 /* Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E14BEC221B9A0C1007BB627 /* Progress.swift */; };
 		4E47E795210D72DF00F242B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47E794210D72DF00F242B9 /* AppDelegate.swift */; };
 		4E47E797210D72DF00F242B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47E796210D72DF00F242B9 /* ViewController.swift */; };
 		4E47E79A210D72DF00F242B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E47E798210D72DF00F242B9 /* Main.storyboard */; };
@@ -25,11 +25,11 @@
 		4E47E7C8210D73FB00F242B9 /* IncreaseAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47E7C5210D73FB00F242B9 /* IncreaseAction.swift */; };
 		4E47E7C9210D73FB00F242B9 /* DecreaseAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47E7C6210D73FB00F242B9 /* DecreaseAction.swift */; };
 		4E47E7CA210D73FB00F242B9 /* RandomColorAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47E7C7210D73FB00F242B9 /* RandomColorAction.swift */; };
-		4E47E7CD210D740100F242B9 /* ConsoleLogMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47E7CB210D740000F242B9 /* ConsoleLogMiddleware.swift */; };
-		4E47E7CE210D740100F242B9 /* PrintCacheValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47E7CC210D740000F242B9 /* PrintCacheValue.swift */; };
-		4E47E7D1210D740A00F242B9 /* ColorReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47E7CF210D740A00F242B9 /* ColorReducer.swift */; };
-		4E47E7D2210D740A00F242B9 /* CountReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47E7D0210D740A00F242B9 /* CountReducer.swift */; };
-		4E47E7D4210D741000F242B9 /* CachePostware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47E7D3210D741000F242B9 /* CachePostware.swift */; };
+		4E47E7CD210D740100F242B9 /* ConsoleLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47E7CB210D740000F242B9 /* ConsoleLog.swift */; };
+		4E47E7CE210D740100F242B9 /* PrintCachedValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47E7CC210D740000F242B9 /* PrintCachedValue.swift */; };
+		4E47E7D1210D740A00F242B9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47E7CF210D740A00F242B9 /* Color.swift */; };
+		4E47E7D2210D740A00F242B9 /* Count.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47E7D0210D740A00F242B9 /* Count.swift */; };
+		4E47E7D4210D741000F242B9 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47E7D3210D741000F242B9 /* Cache.swift */; };
 		4E47E7D6210D741900F242B9 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47E7D5210D741900F242B9 /* ViewModel.swift */; };
 		4E929EC421556FE900FDD954 /* StateKeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E929EC321556FE900FDD954 /* StateKeyPath.swift */; };
 		4EA4DCE82153F17300E9F2A3 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA4DCE72153F17300E9F2A3 /* State.swift */; };
@@ -50,7 +50,7 @@
 /* Begin PBXFileReference section */
 		0E008BD9176300600BFE50BB /* Pods-BKReduxApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BKReduxApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BKReduxApp/Pods-BKReduxApp.debug.xcconfig"; sourceTree = "<group>"; };
 		4E14BEC021B9A09D007BB627 /* ProgressAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressAction.swift; sourceTree = "<group>"; };
-		4E14BEC221B9A0C1007BB627 /* ProgressMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressMiddleware.swift; sourceTree = "<group>"; };
+		4E14BEC221B9A0C1007BB627 /* Progress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Progress.swift; sourceTree = "<group>"; };
 		4E47E791210D72DF00F242B9 /* BKReduxApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BKReduxApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E47E794210D72DF00F242B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E47E796210D72DF00F242B9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -70,11 +70,11 @@
 		4E47E7C5210D73FB00F242B9 /* IncreaseAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncreaseAction.swift; sourceTree = "<group>"; };
 		4E47E7C6210D73FB00F242B9 /* DecreaseAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecreaseAction.swift; sourceTree = "<group>"; };
 		4E47E7C7210D73FB00F242B9 /* RandomColorAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomColorAction.swift; sourceTree = "<group>"; };
-		4E47E7CB210D740000F242B9 /* ConsoleLogMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleLogMiddleware.swift; sourceTree = "<group>"; };
-		4E47E7CC210D740000F242B9 /* PrintCacheValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintCacheValue.swift; sourceTree = "<group>"; };
-		4E47E7CF210D740A00F242B9 /* ColorReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorReducer.swift; sourceTree = "<group>"; };
-		4E47E7D0210D740A00F242B9 /* CountReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountReducer.swift; sourceTree = "<group>"; };
-		4E47E7D3210D741000F242B9 /* CachePostware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachePostware.swift; sourceTree = "<group>"; };
+		4E47E7CB210D740000F242B9 /* ConsoleLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleLog.swift; sourceTree = "<group>"; };
+		4E47E7CC210D740000F242B9 /* PrintCachedValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrintCachedValue.swift; sourceTree = "<group>"; };
+		4E47E7CF210D740A00F242B9 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		4E47E7D0210D740A00F242B9 /* Count.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Count.swift; sourceTree = "<group>"; };
+		4E47E7D3210D741000F242B9 /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		4E47E7D5210D741900F242B9 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		4E929EC321556FE900FDD954 /* StateKeyPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateKeyPath.swift; sourceTree = "<group>"; };
 		4EA4DCE72153F17300E9F2A3 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
@@ -131,9 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				4E47E7C1210D732700F242B9 /* Actions */,
-				4E47E7C2210D732D00F242B9 /* Middlewares */,
 				4E47E7C3210D733500F242B9 /* Reducers */,
-				4E47E7C4210D733B00F242B9 /* Postwares */,
 				4E47E794210D72DF00F242B9 /* AppDelegate.swift */,
 				4E47E796210D72DF00F242B9 /* ViewController.swift */,
 				4E47E7D5210D741900F242B9 /* ViewModel.swift */,
@@ -181,31 +179,17 @@
 			path = Actions;
 			sourceTree = "<group>";
 		};
-		4E47E7C2210D732D00F242B9 /* Middlewares */ = {
-			isa = PBXGroup;
-			children = (
-				4E47E7CB210D740000F242B9 /* ConsoleLogMiddleware.swift */,
-				4E47E7CC210D740000F242B9 /* PrintCacheValue.swift */,
-				4E14BEC221B9A0C1007BB627 /* ProgressMiddleware.swift */,
-			);
-			path = Middlewares;
-			sourceTree = "<group>";
-		};
 		4E47E7C3210D733500F242B9 /* Reducers */ = {
 			isa = PBXGroup;
 			children = (
-				4E47E7CF210D740A00F242B9 /* ColorReducer.swift */,
-				4E47E7D0210D740A00F242B9 /* CountReducer.swift */,
+				4E47E7CB210D740000F242B9 /* ConsoleLog.swift */,
+				4E47E7CC210D740000F242B9 /* PrintCachedValue.swift */,
+				4E14BEC221B9A0C1007BB627 /* Progress.swift */,
+				4E47E7CF210D740A00F242B9 /* Color.swift */,
+				4E47E7D0210D740A00F242B9 /* Count.swift */,
+				4E47E7D3210D741000F242B9 /* Cache.swift */,
 			);
 			path = Reducers;
-			sourceTree = "<group>";
-		};
-		4E47E7C4210D733B00F242B9 /* Postwares */ = {
-			isa = PBXGroup;
-			children = (
-				4E47E7D3210D741000F242B9 /* CachePostware.swift */,
-			);
-			path = Postwares;
 			sourceTree = "<group>";
 		};
 		A1DF89FC6A26CE3DC52E8F5A /* Frameworks */ = {
@@ -395,25 +379,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E47E7D1210D740A00F242B9 /* ColorReducer.swift in Sources */,
+				4E47E7D1210D740A00F242B9 /* Color.swift in Sources */,
 				4E47E7BD210D731700F242B9 /* Store.swift in Sources */,
 				4E47E7C0210D731700F242B9 /* Middleware.swift in Sources */,
 				4EFAF4C521D3C4B0004C1257 /* Queue.swift in Sources */,
 				4E47E7CA210D73FB00F242B9 /* RandomColorAction.swift in Sources */,
 				4E47E7BE210D731700F242B9 /* Action.swift in Sources */,
 				4EA4DCE82153F17300E9F2A3 /* State.swift in Sources */,
-				4E47E7CD210D740100F242B9 /* ConsoleLogMiddleware.swift in Sources */,
+				4E47E7CD210D740100F242B9 /* ConsoleLog.swift in Sources */,
 				4E47E7D6210D741900F242B9 /* ViewModel.swift in Sources */,
 				4E47E7C8210D73FB00F242B9 /* IncreaseAction.swift in Sources */,
-				4E47E7D4210D741000F242B9 /* CachePostware.swift in Sources */,
+				4E47E7D4210D741000F242B9 /* Cache.swift in Sources */,
 				4E929EC421556FE900FDD954 /* StateKeyPath.swift in Sources */,
-				4E47E7D2210D740A00F242B9 /* CountReducer.swift in Sources */,
+				4E47E7D2210D740A00F242B9 /* Count.swift in Sources */,
 				4E47E797210D72DF00F242B9 /* ViewController.swift in Sources */,
-				4E47E7CE210D740100F242B9 /* PrintCacheValue.swift in Sources */,
+				4E47E7CE210D740100F242B9 /* PrintCachedValue.swift in Sources */,
 				4E47E795210D72DF00F242B9 /* AppDelegate.swift in Sources */,
 				4E47E7BC210D731700F242B9 /* Postware.swift in Sources */,
 				4E47E7C9210D73FB00F242B9 /* DecreaseAction.swift in Sources */,
-				4E14BEC321B9A0C1007BB627 /* ProgressMiddleware.swift in Sources */,
+				4E14BEC321B9A0C1007BB627 /* Progress.swift in Sources */,
 				4E47E7BB210D731700F242B9 /* Reducer.swift in Sources */,
 				4E14BEC121B9A09D007BB627 /* ProgressAction.swift in Sources */,
 				4E47E7BF210D731700F242B9 /* ViewModelType.swift in Sources */,

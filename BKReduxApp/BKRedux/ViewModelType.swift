@@ -36,15 +36,12 @@ open class ViewModelType<S: State> {
     private func setupRxStream() {
         rx_action
             .filter { type(of: $0) != VoidAction.self }
-            .map({ [weak self] (action) in
-                return self?.beforeDispatch(action: action) ?? VoidAction()
+            .map({ [unowned self] (action) in
+                return self.beforeDispatch(action: action)
             })
             .filter { type(of: $0) != VoidAction.self }
-            .flatMap { [weak self] (action)  in
-                return self?.store.dispatch(action: action) ?? Single.create(subscribe: { (single) -> Disposable in
-                    single(.success(nil))
-                    return Disposables.create()
-                })
+            .flatMap { [unowned self] (action)  in
+                return self.store.dispatch(action: action)
             }
             .observeOn(MainScheduler.asyncInstance)
             .map({ (state: State?) -> S? in

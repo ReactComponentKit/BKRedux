@@ -11,7 +11,7 @@ import RxSwift
 import UIKit
 
 extension ViewModel {
-    func colorReducer(state: State, action: Action) -> Observable<State> {
+    func color(state: State, action: Action) -> Observable<State> {
         guard var mutableState = state as? MyState else { return .just(state) }
         
         if let act = action as? RandomColorAction {
