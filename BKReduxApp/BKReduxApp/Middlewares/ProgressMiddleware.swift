@@ -35,11 +35,9 @@ extension ViewModel {
                     nextDispatch(action: ProgressAction(), applyNewState: true)
                     Thread.sleep(forTimeInterval: 0.1)
                     
-                    if let currentState = store.state {
-                        let progress = mutableState.progress
-                        mutableState = currentState
-                        mutableState.progress = progress
-                    }
+                    let progress = mutableState.progress
+                    mutableState = store.state
+                    mutableState.progress = progress
                 }
             }
 

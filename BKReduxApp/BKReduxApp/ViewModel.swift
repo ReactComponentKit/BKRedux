@@ -56,7 +56,7 @@ class ViewModel: ViewModelType<MyState> {
         output.progress.accept(newState.progress)
     }
     
-    override func on(error: Error, action: Action, onState: MyState) {
+    override func on(error: Error, action: Action) {
         
     }
     
