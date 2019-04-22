@@ -22,13 +22,10 @@ struct MyState: State {
 
 class ViewModel: ViewModelType<MyState> {
     
-    struct Output {
-        let count = BehaviorRelay<String>(value: "0")
-        let color = BehaviorRelay<UIColor>(value: UIColor.white)
-        let progress = BehaviorRelay<Float>(value: 0.0)
-    }
+    let count = Output<String>(value: "0")
+    let color = Output<UIColor>(value: UIColor.white)
+    let progress = Output<Float>(value: 0.0)
     
-    let output = Output()
     override init() {
         super.init()
         
@@ -51,9 +48,9 @@ class ViewModel: ViewModelType<MyState> {
     }
     
     override func on(newState: MyState) {
-        output.count.accept(String(newState.count))
-        output.color.accept(newState.color)
-        output.progress.accept(newState.progress)
+        count.accept(String(newState.count))
+        color.accept(newState.color)
+        progress.accept(newState.progress)
     }
     
     override func on(error: Error, action: Action) {

@@ -36,7 +36,6 @@ class ViewController: UIViewController {
         stopProgressButton.rx.tap.map { StopProgressAction() }.bind(onNext: viewModel.dispatch).disposed(by: disposeBag)
         
         viewModel
-            .output
             .color
             .asDriver()
             .drive(onNext: { [weak self] (color) in
@@ -47,7 +46,6 @@ class ViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel
-            .output
             .count
             .asDriver()
             .drive(onNext: { [weak self] (countString) in
@@ -56,7 +54,6 @@ class ViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel
-            .output
             .progress
             .asDriver()
             .drive(onNext: { [weak self] (progress) in
