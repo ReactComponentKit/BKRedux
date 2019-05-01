@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         #if DEBUG
-        _ = Observable<Int>.interval(1, scheduler: MainScheduler.instance)
+        _ = Observable<Int>.interval(DispatchTimeInterval.seconds(1), scheduler: MainScheduler.instance)
             .subscribe(onNext: { (_) in
               
                 print("Resource count \(RxSwift.Resources.total)")
