@@ -15,12 +15,18 @@ import RxCocoa
 public final class Output<Element: Equatable>: ObservableType {
     
     private let _relay: BehaviorRelay<Element>
+    private let ignoreCompareValue: Bool
     
     /// Accepts `event` and emits it to subscribers
     public func accept(_ event: Element) {
         if self.value != event {
             self._relay.accept(event)
         }
+    }
+    
+    /// Accepts `event` without compare and emits it to subscribers
+    public func acceptWithoutCompare(_ event: Element) {
+        self._relay.accept(event)
     }
     
     /// Current value of behavior subject
@@ -30,7 +36,8 @@ public final class Output<Element: Equatable>: ObservableType {
     }
     
     /// Initializes behavior relay with initial value.
-    public init(value: Element) {
+    public init(value: Element, ignoreCompareValue: Bool = false) {
+        self.ignoreCompareValue = ignoreCompareValue
         self._relay = BehaviorRelay(value: value)
     }
     
